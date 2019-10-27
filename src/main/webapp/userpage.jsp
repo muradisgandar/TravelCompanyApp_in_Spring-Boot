@@ -99,7 +99,6 @@
                         </tr>
                     </thead>
                     <c:forEach items="${travelList}" var="item" varStatus="status">
-
                         <tbody>
                         <td>
                             ${status.count} 

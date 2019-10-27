@@ -97,8 +97,6 @@
                             <th>Date</th>
                             <th>Order</th>
                         </tr>
-
-
                     </thead>
                     <c:forEach items="${travelList}" var="item" varStatus="status">
 

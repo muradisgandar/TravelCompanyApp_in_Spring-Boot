@@ -41,13 +41,11 @@
                 <img src="/images2.jpeg" style="width:150px; height:60px;border-radius: 10px;"   class="d-inline-block align-top">
 
             </a>
-
             <form action="/logout" method="POST">
                 <button type="submit" class="btn btn-primary"
                         onclick="logoutPage()">
                     Log out</button>
             </form>
-
         </nav>
 
         <div class="row" id="verify" style="margin-left: 10px">
@@ -99,8 +97,6 @@
                             <th>Date</th>
                             <th>Order</th>
                         </tr>
-
-
                     </thead>
                     <c:forEach items="${travelList}" var="item" varStatus="status">
 

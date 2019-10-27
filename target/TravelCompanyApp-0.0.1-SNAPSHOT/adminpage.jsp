@@ -61,7 +61,6 @@
 
         </nav>
 
-
         <div class="modal" id="delete">
             <div class="modal-dialog">
                 <div class="modal-content">

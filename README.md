@@ -8,7 +8,7 @@ Admin - has authorization for CRUD operatons on tour packets and give access to 
 User - has authorization only booking tour packets
 
 ### Utilized technologies
-  *Spring Boot
+  	*Spring Boot
 	*Spring MVC
 	*Spring Data and custom DAO methods(in JPA)
 	*Spring Security

@@ -52,15 +52,17 @@
             <form class="col-md-3" method="POST" action="/userpage/add">
                 <div class="form-group">
                     <label for="username">Username</label><br>
-                    <input type="text" name="username" class="form-control"  placeholder="Username" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="mail">Mail</label><br>
-                    <input type="text" name="mail" class="form-control"  placeholder="Mail" required="required">
+                    <input type="text" name="username" class="form-control"  placeholder="Must be your registered username" required="required">
+                    <p style="color:red;">*It is required for authentication</p>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label><br>
                     <input type="text" name="password" class="form-control"  placeholder="Password" required="required">
+                    <p style="color:red;">*It must be current password</p>
+                </div>
+                <div class="form-group">
+                    <label for="mail">Mail</label><br>
+                    <input type="text" name="mail" class="form-control"  placeholder="Mail" required="required">
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label><br>

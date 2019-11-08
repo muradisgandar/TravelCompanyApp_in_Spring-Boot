@@ -5,7 +5,6 @@
  */
 package com.company.main.controller;
 
-import com.company.main.dao.UsersRepository;
 import com.company.main.entities.Travelpackages;
 import com.company.main.entities.Users;
 import com.company.main.services.TravelPackagesServiceInter;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,9 +99,6 @@ public class AdminController {
         
         model.addAttribute("falseEnabled", falseEnabled);
         model.addAttribute("trueEnabled", trueEnabled);
-        
-        System.out.println(falseEnabled);
-        System.out.println(trueEnabled);
         
         return "usermanagement";
     }

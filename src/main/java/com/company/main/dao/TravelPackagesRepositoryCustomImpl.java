@@ -48,8 +48,6 @@ public class TravelPackagesRepositoryCustomImpl implements TravelPackagesReposit
         query.setParameter("name", "%" + countryname + "%");
         query.setParameter("date", "%" + date + "%");
 
-        System.out.println("countryname  "+countryname);
-        System.out.println("date  "+date);
         List<Travelpackages> result = query.getResultList();
         if (result.size() > 0) {
             return result;

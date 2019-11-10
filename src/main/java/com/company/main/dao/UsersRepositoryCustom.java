@@ -6,7 +6,6 @@
 package com.company.main.dao;
 
 import com.company.main.entities.Users;
-import java.util.List;
 
 /**
  *

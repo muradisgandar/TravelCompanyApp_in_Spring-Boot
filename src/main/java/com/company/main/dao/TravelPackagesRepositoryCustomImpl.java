@@ -39,7 +39,7 @@ public class TravelPackagesRepositoryCustomImpl implements TravelPackagesReposit
         /*
         Explanation of below if statements:
         if one of request params is empty , we assign it to null,
-        because all of data in database has empty character,that is why
+        because all of data in database have empty character,that is why
         jpql query will be given all data in suitable table
          */
         if (date.isEmpty()) {

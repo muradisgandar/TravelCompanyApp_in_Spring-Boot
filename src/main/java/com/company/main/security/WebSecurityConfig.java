@@ -34,25 +34,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
-    
-//    public static void main(String[] args) {
-//        System.out.println(new BCryptPasswordEncoder().encode("1234"));
-//    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login","/index","/registration","/registration/register").permitAll()
-                .and().authorizeRequests().antMatchers("/adminpage","/users").hasAuthority("ADMIN")
-                .and().authorizeRequests().antMatchers("/index","/userpage").hasAuthority("USER")
+                .antMatchers("/login", "/index", "/registration", "/registration/register").permitAll()
+                .and().authorizeRequests().antMatchers("/adminpage", "/users").hasAuthority("ADMIN")
+                .and().authorizeRequests().antMatchers("/index", "/userpage").hasAuthority("USER")
                 .and().authorizeRequests().anyRequest().hasAnyAuthority("ADMIN", "USER")
                 .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/login")
-                    .defaultSuccessUrl("/index", true)
-                    .failureUrl("/login?error=true")
-                    .permitAll()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/index", true)
+                .failureUrl("/login?error=true")
+                .permitAll()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and().csrf().disable();
 

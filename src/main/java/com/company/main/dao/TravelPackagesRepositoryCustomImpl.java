@@ -35,15 +35,20 @@ public class TravelPackagesRepositoryCustomImpl implements TravelPackagesReposit
         if ((countryname == null || countryname.isEmpty()) && (date == null || date.isEmpty())) {
             return getAll();
         }
-        
-        //request params are empty,that is why, we assign them to null 
-        if(date.isEmpty()){
-            date=null;
+
+        /*
+        Explanation of below if statements:
+        if one of request params is empty , we assign it to null,
+        because all of data in database has empty character,that is why
+        jpql query will be given all data in suitable table
+         */
+        if (date.isEmpty()) {
+            date = null;
         }
-        if(countryname.isEmpty()){
-            countryname=null;
+        if (countryname.isEmpty()) {
+            countryname = null;
         }
-        
+
         Query query = em.createQuery("select t from Travelpackages t where t.countryname like :name or t.date like :date");
         query.setParameter("name", "%" + countryname + "%");
         query.setParameter("date", "%" + date + "%");

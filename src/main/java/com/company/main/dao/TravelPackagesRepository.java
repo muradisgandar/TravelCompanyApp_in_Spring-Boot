@@ -6,9 +6,7 @@
 package com.company.main.dao;
 
 import com.company.main.entities.Travelpackages;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -16,11 +14,6 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface TravelPackagesRepository extends JpaRepository<Travelpackages, Integer>, TravelPackagesRepositoryCustom {
     
-//    @Query("update Travelpackages t set t.countryname = t.countryname or t.date :date where t.id :id")
-//    public boolean updatePackage(Travelpackages t);
-    
-//    @Query(value = "select t from Travelpackages t where t.countryname = ?1 or t.date = ?2")
-//    public List<Travelpackages> getAllByParameters(String countryname, String date);
     
     
 }

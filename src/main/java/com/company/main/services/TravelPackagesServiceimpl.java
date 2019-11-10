@@ -21,35 +21,35 @@ import javax.transaction.Transactional;
 public class TravelPackagesServiceimpl implements TravelPackagesServiceInter{
 
     @Autowired
-    TravelPackagesRepository customdao;
+    TravelPackagesRepository travelPackagesDao;
     
     @Override
     public List<Travelpackages> getAll() {
-        List<Travelpackages> result = customdao.findAll();
+        List<Travelpackages> result = travelPackagesDao.findAll();
         return result;
     }
 
     @Override
     public List<Travelpackages> getAllByParameters(String countryname, String date) {
-        List<Travelpackages> result = customdao.getAllByParameters(countryname, date);
+        List<Travelpackages> result = travelPackagesDao.getAllByParameters(countryname, date);
         return result;
     }
 
     @Override
     public boolean update(Travelpackages t) {
-        customdao.update(t);
+        travelPackagesDao.update(t);
         return true;
     }
 
     @Override
     public boolean add(Travelpackages t) {
-        customdao.save(t);
+        travelPackagesDao.save(t);
         return true;
     }
 
     @Override
     public boolean delete(int id) {
-        customdao.deleteById(id);
+        travelPackagesDao.deleteById(id);
         return true;
     }
     

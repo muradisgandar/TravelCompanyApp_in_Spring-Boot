@@ -17,13 +17,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author murad_isgandar
  */
 @Controller
+@RequestMapping("/userpage")
 public class UserController {
 
     @Autowired
@@ -32,22 +35,24 @@ public class UserController {
     @Autowired
     TravelPackagesServiceInter travelservice;
 
-    @GetMapping("/userpage")
-    public String userGet(Model model) {
+    @GetMapping
+    public ModelAndView userGet(ModelAndView modelAndView) {
         List<Travelpackages> list = travelservice.getAll();
-        model.addAttribute("travelList", list);
+        modelAndView.addObject("travelList", list);
 
         Users u = new Users();
-        model.addAttribute("user", u);
-        return "/userpage";
+        modelAndView.addObject("user", u);
+        modelAndView.setViewName("userpage");
+        
+        return modelAndView;
     }
 
-    @PostMapping("/userpage/add")
-    public String userAdd(@ModelAttribute("user") UserDTO userdto,
+    @PostMapping("/add")
+    public ModelAndView userAdd(@ModelAttribute("user") UserDTO userdto,
             @RequestParam(value = "tour_id") Travelpackages tour_id) {
         userdto.setTourId(tour_id);
         userservice.addUserOtherDetails(new Users(null, userdto.getName(), userdto.getSurname(), userdto.getAge(), userdto.getGender(), userdto.getPhoneNumber(), userdto.getMail(), userdto.getUsername(), userdto.getPassword(), true, userdto.getTourId()));
-        return "redirect:/userpage";
+        return new ModelAndView("redirect:/userpage");
     }
 
 }

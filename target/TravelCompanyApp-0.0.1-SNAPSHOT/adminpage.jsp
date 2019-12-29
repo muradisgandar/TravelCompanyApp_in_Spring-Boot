@@ -50,8 +50,8 @@
                 <img src="/images2.jpeg" style="width:100px; height:60px;border-radius: 10px;"class="d-inline-block align-top">
 
             </a>
-            <form action="/users" method="GET">
-                <a class="btn btn-primary" href="/users" target="blank" role="button">User Management</a>
+            <form action="/adminpage/users" method="GET">
+                <a class="btn btn-primary" href="/adminpage/users" target="blank" role="button">User Management</a>
             </form>
             <form action="/logout" method="POST">
                 <button type="submit" class="btn btn-primary"

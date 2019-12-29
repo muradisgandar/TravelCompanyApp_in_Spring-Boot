@@ -49,7 +49,7 @@
             <div class="modal" id="update">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="/users/access" method="POST">
+                        <form action="/adminpage/users/access" method="POST">
                             <!-- Modal Header -->
                             <div class="modal-header">
                                 <h4 class="modal-title">Manage</h4>

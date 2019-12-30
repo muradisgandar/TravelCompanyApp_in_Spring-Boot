@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author murad_isgandar
  */
 @Controller
-@RequestMapping("/pageuser")
+@RequestMapping("/userpage1")
 public class UserController {
 
     @Autowired
@@ -42,7 +42,7 @@ public class UserController {
 
         Users u = new Users();
         modelAndView.addObject("user", u);
-        modelAndView.setViewName("pageuser");
+        modelAndView.setViewName("userpage1");
         
         return modelAndView;
     }
@@ -52,7 +52,7 @@ public class UserController {
             @RequestParam(value = "tour_id") Travelpackages tour_id) {
         userdto.setTourId(tour_id);
         userservice.addUserOtherDetails(new Users(null, userdto.getName(), userdto.getSurname(), userdto.getAge(), userdto.getGender(), userdto.getPhoneNumber(), userdto.getMail(), userdto.getUsername(), userdto.getPassword(), true, userdto.getTourId()));
-        return new ModelAndView("redirect:/pageuser");
+        return new ModelAndView("redirect:/userpage1");
     }
 
 }

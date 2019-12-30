@@ -40,9 +40,7 @@ public class AdminController {
         List<Travelpackages> list = service.getAll();
         modelAndView.addObject("travelList", list);
 
-        Travelpackages t = new Travelpackages();
-        modelAndView.addObject("travel", t);
-        modelAndView.setViewName("adminpage");
+        modelAndView.setViewName("admin/adminpage");
 
         return modelAndView;
     }
@@ -51,9 +49,15 @@ public class AdminController {
     public ModelAndView search(@RequestParam(value = "countryname") String countryname,
             @RequestParam(value = "date") String date,
             ModelAndView modelAndView) {
-        List<Travelpackages> list = service.getAllByParameters(countryname, date);
-        modelAndView.addObject("travelList", list);
-        modelAndView.setViewName("/adminpage");
+
+        if ((countryname != null && !countryname.isEmpty()) || (date != null && !date.isEmpty())) {
+            List<Travelpackages> list = service.getAllByParameters(countryname, date);
+            modelAndView.addObject("travelList", list);
+            modelAndView.setViewName("admin/adminpage");
+        } else {
+            return new ModelAndView("redirect:/adminpage");
+        }
+
 
         return modelAndView;
     }

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -30,22 +31,24 @@ public class LoginAndRegistration {
     AuthoritiesServiceInter authoritiesService;
     
     @RequestMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login(ModelAndView modelAndView) {
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
     
     @RequestMapping("/registration")
-    public String registerPage(Model model) {
-        return "registration";
+    public ModelAndView registerPage(ModelAndView modelAndView) {
+        modelAndView.setViewName("registration");
+        return modelAndView;
     }
     
     @RequestMapping(value = "/registration/register", method = RequestMethod.POST)
-    public String userRegister(@ModelAttribute("register") Users u) {
+    public ModelAndView userRegister(@ModelAttribute("register") Users u) {
         u.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));//for encoding user password then addUserOtherDetails db
         service.addUsernameAndPassword(u);
         
         authoritiesService.addAuthority(u);
-        return "redirect:/login";
+        return new ModelAndView("redirect:/login");
     }
     
     

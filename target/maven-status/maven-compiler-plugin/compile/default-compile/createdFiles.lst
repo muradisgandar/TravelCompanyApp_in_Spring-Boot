@@ -10,6 +10,7 @@ com/company/main/controller/AdminController.class
 com/company/main/entities/Authorities.class
 com/company/main/dto/UserDTO.class
 com/company/main/dao/TravelPackagesRepositoryCustomImpl.class
+com/company/main/controller/IndexController.class
 com/company/main/dao/UsersRepositoryCustomImpl.class
 com/company/main/services/TravelPackagesServiceInter.class
 com/company/main/security/WebSecurityConfig.class

@@ -20,6 +20,7 @@
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/dao/TravelPackagesRepository.java
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/services/UserDetailsServiceImpl.java
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/dao/TravelPackagesRepositoryCustom.java
+/home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/controller/IndexController.java
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/dto/UserDTO.java
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/dao/TravelPackagesRepositoryCustomImpl.java
 /home/murad_isgandar/git_workspace/TravelCompanyApp_in_Spring-Boot/src/main/java/com/company/main/dao/AuthoritiesRepository.java

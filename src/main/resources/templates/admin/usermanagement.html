@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User management</title>
+        <style>
+            body{
+                background: linear-gradient( #7f7fd5, #86a8e7, #91eae4);
+            }
+            table {
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+            b{
+                text-align: center;
+            }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+
+            function getByIdUpdate(id) {
+                document.getElementById("getByIdForUpdate").value = id;
+            }
+
+        </script>
+    </head>
+    <body>
+
+        <div class="modal" id="update">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/adminpage/users/access" method="POST">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Manage</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Are you sure to change access of selected user?
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" id="getByIdForUpdate"/>
+                            <input type="submit" class="btn btn-success" value="Yes">
+                            <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <h1 style="text-align:center;">Active Users</h1>
+        <div class="table-bordered table-responsive" th:object = "${trueEnabled}">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>İnactivate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="t : ${trueEnabled}">
+                        <td th:text="${t.username}"></td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#update"
+                                    th:onclick="|getByIdUpdate('${t.id}')|"
+                                    >
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h1 style="text-align:center;">Inactive Users</h1>
+        <div class="table-bordered table-responsive" th:object = "${falseEnabled}">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Activate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="t : ${falseEnabled}">
+                        <td th:text="${t.username}"></td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#update"
+                                    th:onclick="|getByIdUpdate('${t.id}')|"
+                                    >
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

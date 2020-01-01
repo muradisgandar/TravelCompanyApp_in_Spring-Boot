@@ -16,8 +16,8 @@
 	*Spring MVC
 	*Spring Data and custom JPA queries
 	*Spring Security
-	*JSP
-	*Thymeleaf
+	*JSP(in release 1)
+	*Thymeleaf(in release 2)
 ### About me
 * [Facebook](https://www.facebook.com/murad.isgenderli.12)
 * [LinkedIn](https://www.linkedin.com/in/murad-isgandarli-23500b198/)

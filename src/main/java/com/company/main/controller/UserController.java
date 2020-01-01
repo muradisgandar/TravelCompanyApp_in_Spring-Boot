@@ -13,7 +13,6 @@ import com.company.main.services.UsersServiceInter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +35,7 @@ public class UserController {
     TravelPackagesServiceInter travelservice;
 
     @GetMapping
-    public ModelAndView userGet(ModelAndView modelAndView) {
+    public ModelAndView getTravelPackages(ModelAndView modelAndView) {
         List<Travelpackages> list = travelservice.getAll();
         modelAndView.addObject("travelList", list);
 

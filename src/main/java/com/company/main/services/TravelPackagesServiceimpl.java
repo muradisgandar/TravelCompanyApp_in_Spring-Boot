@@ -18,14 +18,20 @@ import javax.transaction.Transactional;
  */
 @Service
 @Transactional
-public class TravelPackagesServiceimpl implements TravelPackagesServiceInter{
+public class TravelPackagesServiceimpl implements TravelPackagesServiceInter {
 
     @Autowired
     TravelPackagesRepository travelPackagesDao;
-    
+
+    @Override
+    public Travelpackages getById(Integer id) {
+        Travelpackages t = travelPackagesDao.findById(id).get();
+        return t;
+    }
+
     @Override
     public List<Travelpackages> getAll() {
-        List<Travelpackages> result = travelPackagesDao.findAll();
+        List<Travelpackages> result = (List) travelPackagesDao.findAll();
         return result;
     }
 
@@ -36,8 +42,13 @@ public class TravelPackagesServiceimpl implements TravelPackagesServiceInter{
     }
 
     @Override
-    public boolean update(Travelpackages t) {
-        travelPackagesDao.update(t);
+    public boolean update(Travelpackages t, Integer id) {
+
+        Travelpackages packet = travelPackagesDao.findById(id).get();
+
+        packet.setCountryname(t.getCountryname());
+        packet.setDate(t.getDate());
+        travelPackagesDao.save(packet);
         return true;
     }
 
@@ -52,6 +63,5 @@ public class TravelPackagesServiceimpl implements TravelPackagesServiceInter{
         travelPackagesDao.deleteById(id);
         return true;
     }
-    
-    
+
 }

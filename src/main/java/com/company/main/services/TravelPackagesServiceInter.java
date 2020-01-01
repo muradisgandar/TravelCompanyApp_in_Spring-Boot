@@ -15,9 +15,11 @@ import java.util.List;
 public interface TravelPackagesServiceInter {
     public List<Travelpackages> getAll();
 
+    public Travelpackages getById(Integer id);
+    
     public List<Travelpackages> getAllByParameters(String countryname,String date);
 
-    public boolean update(Travelpackages t);
+    public boolean update(Travelpackages t,Integer id);
 
     public boolean add(Travelpackages t);
 

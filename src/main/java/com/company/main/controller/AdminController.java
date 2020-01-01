@@ -68,8 +68,8 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public ModelAndView update(@ModelAttribute("updatePackage") Travelpackages t) {
-        service.update(t);
+    public ModelAndView update(@ModelAttribute("updatePackage") Travelpackages t,@RequestParam(value = "id") Integer id) {
+        service.update(t,id);
         return new ModelAndView("redirect:/adminpage");
     }
 

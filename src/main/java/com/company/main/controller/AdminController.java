@@ -57,7 +57,6 @@ public class AdminController {
             return new ModelAndView("redirect:/adminpage");
         }
 
-
         return modelAndView;
     }
 
@@ -68,8 +67,8 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public ModelAndView update(@ModelAttribute("updatePackage") Travelpackages t,@RequestParam(value = "id") Integer id) {
-        service.update(t,id);
+    public ModelAndView update(@ModelAttribute("updatePackage") Travelpackages t, @RequestParam(value = "id") Integer id) {
+        service.update(t, id);
         return new ModelAndView("redirect:/adminpage");
     }
 
@@ -97,7 +96,7 @@ public class AdminController {
         modelAndView.addObject("falseEnabled", falseEnabled);//for inactive users
         modelAndView.addObject("trueEnabled", trueEnabled);//for active users
         modelAndView.setViewName("admin/usermanagement");
-        
+
         return modelAndView;
     }
 

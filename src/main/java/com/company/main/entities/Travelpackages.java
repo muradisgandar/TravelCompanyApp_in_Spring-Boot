@@ -126,5 +126,5 @@ public class Travelpackages implements Serializable {
     public String toString() {
         return "com.company.main.entities.Travelpackages[ id=" + id + " ]";
     }
-    
+
 }

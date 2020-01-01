@@ -5,7 +5,6 @@
 * App has login and registration page.
 * There are 2 roles in app:
 * Admin - has authorization for CRUD operations on tour packets and give access to login for users.
-* Admin authentication username: appAdmin, pass: 1234.
 * User - has authorization only booking tour packets
 
 ### Difference between releases

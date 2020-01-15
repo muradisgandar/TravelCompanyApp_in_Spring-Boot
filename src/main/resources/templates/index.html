@@ -10,12 +10,45 @@ and open the template in the editor.
         <title>Travel Company</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Murad Isgandarli">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <style>
             body{
                 background: linear-gradient( #7f7fd5, #86a8e7, #91eae4);
             }
         </style>
+        <script>
+            $(document).ready(function () {
+
+            /* for changing pisa tower photos by mouse hovering*/
+                $("#img1").hover(function () {
+
+                    $("#img1").attr("src", "/pisa.jpg");
+
+                }, function () {
+                    $("#img1").attr("src", "/pisa2.jpg");
+                });
+
+            /* for changing pyramid photos by mouse hovering*/
+                $("#img2").hover(function () {
+
+                    $("#img2").attr("src", "/egypt2.jpeg");
+
+                }, function () {
+                    $("#img2").attr("src", "/egypt.jpeg");
+                });
+
+            /* for changing eiffel tower photos by mouse hovering*/    
+                $("#img3").hover(function () {
+
+                    $("#img3").attr("src", "/eiffel2.jpeg");
+
+                }, function () {
+                    $("#img3").attr("src", "/eiffel.jpeg");
+                });
+
+
+            });
+        </script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,7 +88,7 @@ and open the template in the editor.
 
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top" src="/pisa.jpg" alt="Card image cap">
+                <img  id="img1" class="card-img-top" src="/pisa2.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Pisa Tower</h5>
                     <p class="card-text">
@@ -70,7 +103,7 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="/egypt.jpeg" alt="Card image cap">
+                <img id="img2" class="card-img-top" src="/egypt.jpeg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Egypt Pyramids</h5>
                     <p class="card-text">
@@ -85,7 +118,7 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="/eiffel.jpeg" alt="Card image cap">
+                <img id="img3" class="card-img-top" src="/eiffel.jpeg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Eiffel Tower</h5>
                     <p class="card-text">

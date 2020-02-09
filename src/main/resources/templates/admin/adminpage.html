@@ -33,7 +33,12 @@ and open the template in the editor.
 
 
             function logoutPage() {
-                alert("Do you sure?");
+                if(confirm("Do you sure?")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         </script>
         <script>
@@ -61,9 +66,9 @@ and open the template in the editor.
             <form action="/adminpage/users" method="GET">
                 <a class="btn btn-primary" th:href="@{/adminpage/users}" target="blank" role="button">User Management</a>
             </form>
-            <form action="/logout" method="POST">
+            <form onsubmit="return logoutPage()" action="/logout" method="POST">
                 <button type="submit" class="btn btn-primary"
-                        onclick="logoutPage()">
+                        >
                     Log out</button>
             </form>
 

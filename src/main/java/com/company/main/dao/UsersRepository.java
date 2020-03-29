@@ -6,13 +6,13 @@
 package com.company.main.dao;
 
 import com.company.main.entities.Users;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author murad_isgandar
  */
-public interface UsersRepository extends JpaRepository<Users, Integer> ,UsersRepositoryCustom{
+public interface UsersRepository extends CrudRepository<Users, Integer>{
     
     public Users findUserByUsername(String username);
     

@@ -35,7 +35,7 @@ public class ErrorHandlingController implements ErrorController {
                 return "error-404";
             }
         }
-        return "error";
+        return "error/error";
     }
 
     @Override

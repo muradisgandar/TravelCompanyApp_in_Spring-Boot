@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            body{
+                background: linear-gradient( #7f7fd5, #86a8e7, #91eae4);
+            }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function getById(id) {
+                document.getElementById("getNameById").value = id;
+            }
+            function logoutPage() {
+                if(confirm("Do you sure?")){
+                    return ture;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            function informUser() {
+                if(confirm("Thank you for applying! Your information will be sent our database")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <img src="/images2.jpeg" style="width:150px; height:60px;border-radius: 10px;"   class="d-inline-block align-top">
+
+            </a>
+            <form onsubmit="return logoutPage()" action="/logout" method="POST">
+                <button type="submit" class="btn btn-primary"
+                        >
+                    Log out</button>
+            </form>
+        </nav>
+
+        <div class="row" id="verify" style="margin-left: 10px">
+            <form onsubmit="return informUser()" class="col-md-3" method="POST" action="/userpage/add">
+                <div class="form-group">
+                    <label for="username">Username</label><br>
+                    <input type="text" name="username" class="form-control"  placeholder="Must be your registered username" required="required">
+                    <p style="color:red;">*It is required for authentication</p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label><br>
+                    <input type="text" name="password" class="form-control"  placeholder="Password" required="required">
+                    <p style="color:red;">*It must be current password</p>
+                </div>
+                <div class="form-group">
+                    <label for="mail">Mail</label><br>
+                    <input type="text" name="mail" class="form-control"  placeholder="Mail" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label><br>
+                    <input type="text" name="name" class="form-control"  placeholder="Name" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label><br>
+                    <input type="text" name="surname" class="form-control"  placeholder="Surname" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label><br>
+                    <input type="number" name="age" class="form-control"  placeholder="Age" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label><br>
+                    <input type="number" name="phoneNumber" class="form-control"  placeholder="+994557696787" required="required">
+                </div>
+
+                <div class="form-group">
+                    Man<input type="radio" name="gender" value="Man">
+                </div>
+                <div class="form-group">
+                    Woman <input type="radio" name="gender" value="Woman">
+                </div>
+                <div class="form-group">
+                    Other<input type="radio" name="gender" value="Other">
+                </div>
+
+                <div class="table-bordered table-responsive" th:object = "${travelList}">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Countryname</th>
+                                <th>Date</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="t : ${travelList}">
+                                <td th:text="${t.countryname}"></td>
+                                <td th:text="${t.date}"></td>
+                                <td>
+                                    <button type="button" class="btn btn-primary"
+                                            th:onclick="|getById('${t.id}')|">
+                                        Choose</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <input type="hidden" name="tour_id" id="getNameById"/>
+                <input type="submit" class="btn btn-success" value="Submit">
+
+
+            </form>
+
+
+
+        </div>
+
+
+    </body>
+</html>

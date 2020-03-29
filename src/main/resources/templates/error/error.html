@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>404 NOT FOUND!</title>
+        <style>
+            body {
+                background-color: #cccccc;
+            }
+            h1{
+                font-size: 40px;
+                text-align: center;
+                padding-top: 100px;
+            }
+            p{
+                text-align: center;
+            }
+            a{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>404 NOT FOUND</h1>
+        <p>Oops something went wrong!&nbsp;<br><br>
+            Adminpage only seen by admin&nbsp;<br><br>
+            If you see 404 error so
+            you are user</p>
+        <p>Please, go to userpage&nbsp;<a th:href="@{/userpage}" >Click</a></p>
+    </body>
+</html>

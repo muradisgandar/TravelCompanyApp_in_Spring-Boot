@@ -13,101 +13,97 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author murad_isgandar
  */
 @Controller
+@RequestMapping("/adminpage")
 public class AdminController {
-    
+
     @Autowired
     TravelPackagesServiceInter service;
-    
-//    @ModelAttribute("travel")
-//    Travelpackages get(){
-//        return new Travelpackages();
-//    }
-    
 
     @Autowired
     UsersServiceInter userservice;
-    
-    @RequestMapping("/adminpage")
-    public String getAll(Model model) {
+
+    @GetMapping
+    public ModelAndView getAll(ModelAndView modelAndView) {
         List<Travelpackages> list = service.getAll();
-        model.addAttribute("travelList", list);
-        
-        Travelpackages t = new Travelpackages();
-        model.addAttribute("travel",t);
-        
-        return "adminpage";
+        modelAndView.addObject("travelList", list);
+
+        modelAndView.setViewName("admin/adminpage");
+
+        return modelAndView;
     }
-    
-    @RequestMapping("/index")
-    public String homePage() {
-        return "index";
-    }
-    
-    @RequestMapping("/adminpage/search")
-    public String search(@RequestParam(value = "countryname") String countryname,
+
+    @RequestMapping("/search")
+    public ModelAndView search(@RequestParam(value = "countryname") String countryname,
             @RequestParam(value = "date") String date,
-            Model model) {
-        List<Travelpackages> list = service.getAllByParameters(countryname, date);
-        model.addAttribute("travelList", list);
-        
-        return "/adminpage";
+            ModelAndView modelAndView) {
+
+        if ((countryname != null && !countryname.isEmpty()) || (date != null && !date.isEmpty())) {
+            List<Travelpackages> list = service.getAllByParameters(countryname, date);
+            modelAndView.addObject("travelList", list);
+            modelAndView.setViewName("admin/adminpage");
+        } else {
+            return new ModelAndView("redirect:/adminpage");
+        }
+
+        return modelAndView;
     }
-    
-    @PostMapping("/adminpage/add")
-    public String add(@ModelAttribute("addPackage")Travelpackages t) {
+
+    @PostMapping("/add")
+    public ModelAndView add(@ModelAttribute("addPackage") Travelpackages t) {
         service.add(t);
-        return "redirect:/adminpage";
+        return new ModelAndView("redirect:/adminpage");
     }
-    
-    @PostMapping("/adminpage/update")
-    public String update(@ModelAttribute("updatePackage")Travelpackages t) {
-        service.update(t);
-        return "redirect:/adminpage";
+
+    @PostMapping("/update")
+    public ModelAndView update(@ModelAttribute("updatePackage") Travelpackages t, @RequestParam(value = "id") Integer id) {
+        service.update(t, id);
+        return new ModelAndView("redirect:/adminpage");
     }
-    
-    @PostMapping("/adminpage/delete")
-    public String delete(@ModelAttribute("deletePackage")Travelpackages t) {
+
+    @PostMapping("/delete")
+    public ModelAndView delete(@ModelAttribute("deletePackage") Travelpackages t) {
         service.delete(t.getId());
-        return "redirect:/adminpage";
+        return new ModelAndView("redirect:/adminpage");
     }
-    
+
     @GetMapping("/users")
-    public String permit(Model model) {
+    public ModelAndView permit(ModelAndView modelAndView) {
         List<Users> falseEnabled = new ArrayList<>();
         List<Users> trueEnabled = new ArrayList<>();
-        
+
         List<Users> allUsers = userservice.getAllUsers();
-        
-        for(Users u:allUsers){
-            if(u.isEnabled()){
+
+        for (Users u : allUsers) {
+            if (u.isEnabled()) {
                 trueEnabled.add(u);
-            }
-            else
+            } else {
                 falseEnabled.add(u);
+            }
         }
-        
-        model.addAttribute("falseEnabled", falseEnabled);
-        model.addAttribute("trueEnabled", trueEnabled);
-        
-        return "usermanagement";
+
+        modelAndView.addObject("falseEnabled", falseEnabled);//for inactive users
+        modelAndView.addObject("trueEnabled", trueEnabled);//for active users
+        modelAndView.setViewName("admin/usermanagement");
+
+        return modelAndView;
     }
-    
+
     @PostMapping("/users/access")
-    public String access(@RequestParam("id") Integer id) {
+    public ModelAndView access(@RequestParam("id") Integer id) {
         userservice.setEnable(id);
-        return "redirect:/users";
+        return new ModelAndView("redirect:/adminpage/users");
     }
-    
+
 }
